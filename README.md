@@ -256,8 +256,4 @@ Text:            #2c3e50 (رمادي داكن)
 
 **Made with ❤️ for Abu Dhabi City Municipality**
 
-© 2025 بلدية مدينة أبوظبي - جميع الحقوق محفوظة
-
-© 2025 Abu Dhabi City Municipality - All Rights Reserved
-
 </div>
