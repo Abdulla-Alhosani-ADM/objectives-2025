@@ -263,8 +263,25 @@ function initModal() {
     });
     
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
+        if (e.key === 'Escape') {
+            // Check for monthly plan popup first (highest priority)
+            const monthlyPopup = document.getElementById('monthly-plan-popup');
+            if (monthlyPopup && monthlyPopup.classList.contains('active')) {
+                closeMonthlyPlanPopup();
+                return;
+            }
+            
+            // Check for inspection plan modal
+            const inspectionModal = document.getElementById('inspection-plan-modal');
+            if (inspectionModal && inspectionModal.classList.contains('active')) {
+                closeInspectionPlanModal();
+                return;
+            }
+            
+            // Check for general modal
+            if (modal.classList.contains('active')) {
+                closeModal();
+            }
         }
     });
 }
@@ -600,10 +617,11 @@ function closeMonthlyPlanPopup() {
     
     popup.classList.remove('active');
     
-    // Clear iframe source when closing to stop loading
+    // Clear iframe source after popup animation completes (300ms)
+    const POPUP_ANIMATION_DURATION = 300;
     setTimeout(() => {
         iframe.src = '';
-    }, 300);
+    }, POPUP_ANIMATION_DURATION);
 }
 
 // Close popup when clicking outside
@@ -614,19 +632,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Close modals with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        const inspectionModal = document.getElementById('inspection-plan-modal');
-        const monthlyPopup = document.getElementById('monthly-plan-popup');
-        
-        if (monthlyPopup && monthlyPopup.classList.contains('active')) {
-            closeMonthlyPlanPopup();
-        } else if (inspectionModal && inspectionModal.classList.contains('active')) {
-            closeInspectionPlanModal();
-        }
-    }
-});
+
 
 // ===================================
 // Export functions for inline use
