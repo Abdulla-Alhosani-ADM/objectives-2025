@@ -570,6 +570,65 @@ function closeProjectModal() {
 }
 
 // ===================================
+// Inspection Plan Description Modal
+// ===================================
+function showInspectionPlanDescription() {
+    const modal = document.getElementById('inspection-plan-modal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeInspectionPlanModal() {
+    const modal = document.getElementById('inspection-plan-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function openMonthlyPlanPopup() {
+    const popup = document.getElementById('monthly-plan-popup');
+    const iframe = document.getElementById('monthly-plan-iframe');
+    
+    // Set the iframe source to the monthly inspection plan URL
+    iframe.src = 'https://aliabdelaal-adm.github.io/Monthly_inspection_plan/';
+    
+    popup.classList.add('active');
+}
+
+function closeMonthlyPlanPopup() {
+    const popup = document.getElementById('monthly-plan-popup');
+    const iframe = document.getElementById('monthly-plan-iframe');
+    
+    popup.classList.remove('active');
+    
+    // Clear iframe source when closing to stop loading
+    setTimeout(() => {
+        iframe.src = '';
+    }, 300);
+}
+
+// Close popup when clicking outside
+document.addEventListener('click', function(e) {
+    const popup = document.getElementById('monthly-plan-popup');
+    if (e.target === popup) {
+        closeMonthlyPlanPopup();
+    }
+});
+
+// Close modals with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const inspectionModal = document.getElementById('inspection-plan-modal');
+        const monthlyPopup = document.getElementById('monthly-plan-popup');
+        
+        if (monthlyPopup && monthlyPopup.classList.contains('active')) {
+            closeMonthlyPlanPopup();
+        } else if (inspectionModal && inspectionModal.classList.contains('active')) {
+            closeInspectionPlanModal();
+        }
+    }
+});
+
+// ===================================
 // Export functions for inline use
 // ===================================
 window.openModal = openModal;
@@ -577,6 +636,10 @@ window.closeModal = closeModal;
 window.openDocument = openDocument;
 window.openExternalProject = openExternalProject;
 window.closeProjectModal = closeProjectModal;
+window.showInspectionPlanDescription = showInspectionPlanDescription;
+window.closeInspectionPlanModal = closeInspectionPlanModal;
+window.openMonthlyPlanPopup = openMonthlyPlanPopup;
+window.closeMonthlyPlanPopup = closeMonthlyPlanPopup;
 
 console.log('🎯 Objectives 2025 - Application Initialized Successfully');
 console.log('📊 Dashboard loaded and ready');
