@@ -420,14 +420,12 @@ body {
 }
 
 .director-icon {
-    font-size: 3rem;
-    background: var(--gradient-secondary);
     width: 70px;
     height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .director-details h3 {
