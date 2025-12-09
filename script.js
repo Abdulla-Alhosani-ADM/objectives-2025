@@ -273,17 +273,28 @@ function openModal(src, type) {
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
     const modalPdf = document.getElementById('modal-pdf');
+    const modalPptx = document.getElementById('modal-pptx');
     
     modal.classList.add('active');
     
     if (type === 'image') {
         modalImg.style.display = 'block';
         modalPdf.style.display = 'none';
+        modalPptx.style.display = 'none';
         modalImg.src = src;
     } else if (type === 'pdf') {
         modalImg.style.display = 'none';
         modalPdf.style.display = 'block';
+        modalPptx.style.display = 'none';
         modalPdf.src = src;
+    } else if (type === 'pptx') {
+        modalImg.style.display = 'none';
+        modalPdf.style.display = 'none';
+        modalPptx.style.display = 'block';
+        // Use Microsoft Office Online Viewer for PowerPoint files
+        const currentUrl = window.location.href.replace('index.html', '');
+        const pptxUrl = currentUrl + src;
+        modalPptx.src = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(pptxUrl)}`;
     }
 }
 
@@ -291,10 +302,12 @@ function closeModal() {
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
     const modalPdf = document.getElementById('modal-pdf');
+    const modalPptx = document.getElementById('modal-pptx');
     
     modal.classList.remove('active');
     modalImg.src = '';
     modalPdf.src = '';
+    modalPptx.src = '';
 }
 
 function openDocument(filename) {
@@ -334,7 +347,7 @@ function initCharts() {
                 ],
                 datasets: [{
                     label: 'نسبة الإنجاز %',
-                    data: [75, 60, 85, 70],
+                    data: [100, 100, 100, 100],
                     backgroundColor: [
                         'rgba(231, 76, 60, 0.8)',
                         'rgba(52, 152, 219, 0.8)',
@@ -411,7 +424,7 @@ function initCharts() {
                 ],
                 datasets: [{
                     label: 'التقدم',
-                    data: [75, 60, 85, 70],
+                    data: [100, 100, 100, 100],
                     backgroundColor: [
                         'rgba(231, 76, 60, 0.8)',
                         'rgba(52, 152, 219, 0.8)',
@@ -539,11 +552,32 @@ window.addEventListener('beforeprint', () => {
 });
 
 // ===================================
+// External Project Modal
+// ===================================
+function openExternalProject(url) {
+    const projectModal = document.getElementById('project-modal');
+    const projectIframe = document.getElementById('project-iframe');
+    
+    projectModal.classList.add('active');
+    projectIframe.src = url;
+}
+
+function closeProjectModal() {
+    const projectModal = document.getElementById('project-modal');
+    const projectIframe = document.getElementById('project-iframe');
+    
+    projectModal.classList.remove('active');
+    projectIframe.src = '';
+}
+
+// ===================================
 // Export functions for inline use
 // ===================================
 window.openModal = openModal;
 window.closeModal = closeModal;
 window.openDocument = openDocument;
+window.openExternalProject = openExternalProject;
+window.closeProjectModal = closeProjectModal;
 
 console.log('🎯 Objectives 2025 - Application Initialized Successfully');
 console.log('📊 Dashboard loaded and ready');

@@ -34,8 +34,9 @@
                 <a href="#home" class="nav-link active">الرئيسية</a>
                 <a href="#objectives" class="nav-link">الأهداف</a>
                 <a href="#gallery" class="nav-link">المعرض</a>
+                <a href="#projects" class="nav-link">المشاريع</a>
+                <a href="#compliance" class="nav-link">الامتثال</a>
                 <a href="#statistics" class="nav-link">الإحصائيات</a>
-                <a href="#contact" class="nav-link">التواصل</a>
             </div>
             <button class="menu-toggle" id="menu-toggle">
                 <span></span>
@@ -155,7 +156,7 @@
                             <span class="progress-percentage">0%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" data-progress="75"></div>
+                            <div class="progress-fill" data-progress="100"></div>
                         </div>
                     </div>
                 </div>
@@ -198,7 +199,7 @@
                             <span class="progress-percentage">0%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" data-progress="60"></div>
+                            <div class="progress-fill" data-progress="100"></div>
                         </div>
                     </div>
                     <div class="kpi-metrics">
@@ -255,7 +256,7 @@
                             <span class="progress-percentage">0%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" data-progress="85"></div>
+                            <div class="progress-fill" data-progress="100"></div>
                         </div>
                     </div>
                 </div>
@@ -298,7 +299,7 @@
                             <span class="progress-percentage">0%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" data-progress="70"></div>
+                            <div class="progress-fill" data-progress="100"></div>
                         </div>
                     </div>
                 </div>
@@ -348,15 +349,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="images">
-                    <div class="gallery-card">
-                        <img src="4.jpg" alt="صورة 4" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>صورة توضيحية 4</h4>
-                            <button class="view-btn" onclick="openModal('4.jpg', 'image')">عرض</button>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="gallery-item" data-category="images">
                     <div class="gallery-card">
                         <img src="5.jpg" alt="صورة 5" loading="lazy">
@@ -375,7 +368,7 @@
                             <h4>مستند 2.pdf</h4>
                             <p>تقرير مفصل</p>
                         </div>
-                        <button class="view-btn" onclick="openDocument('2.pdf')">عرض</button>
+                        <button class="view-btn" onclick="openModal('2.pdf', 'pdf')">عرض</button>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="documents">
@@ -385,19 +378,10 @@
                             <h4>مستند 3.pdf</h4>
                             <p>تقرير مفصل</p>
                         </div>
-                        <button class="view-btn" onclick="openDocument('3.pdf')">عرض</button>
+                        <button class="view-btn" onclick="openModal('3.pdf', 'pdf')">عرض</button>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="documents">
-                    <div class="gallery-card document-card">
-                        <div class="document-icon">📄</div>
-                        <div class="document-info">
-                            <h4>مستند 4.pdf</h4>
-                            <p>تقرير مفصل</p>
-                        </div>
-                        <button class="view-btn" onclick="openDocument('4.pdf')">عرض</button>
-                    </div>
-                </div>
+
                 <div class="gallery-item" data-category="documents">
                     <div class="gallery-card document-card">
                         <div class="document-icon">📄</div>
@@ -405,7 +389,7 @@
                             <h4>مستند 5.pdf</h4>
                             <p>تقرير مفصل</p>
                         </div>
-                        <button class="view-btn" onclick="openDocument('5.pdf')">عرض</button>
+                        <button class="view-btn" onclick="openModal('5.pdf', 'pdf')">عرض</button>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="documents">
@@ -415,7 +399,7 @@
                             <h4>مستند 6.pdf</h4>
                             <p>تقرير مفصل</p>
                         </div>
-                        <button class="view-btn" onclick="openDocument('6.pdf')">عرض</button>
+                        <button class="view-btn" onclick="openModal('6.pdf', 'pdf')">عرض</button>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="documents">
@@ -425,7 +409,7 @@
                             <h4>مستند 7.pdf</h4>
                             <p>تقرير مفصل</p>
                         </div>
-                        <button class="view-btn" onclick="openDocument('7.pdf')">عرض</button>
+                        <button class="view-btn" onclick="openModal('7.pdf', 'pdf')">عرض</button>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="documents">
@@ -435,7 +419,7 @@
                             <h4>مستند 20.pdf</h4>
                             <p>تقرير مفصل</p>
                         </div>
-                        <button class="view-btn" onclick="openDocument('20.pdf')">عرض</button>
+                        <button class="view-btn" onclick="openModal('20.pdf', 'pdf')">عرض</button>
                     </div>
                 </div>
 
@@ -447,7 +431,7 @@
                             <h4>عرض 1.pptx</h4>
                             <p>عرض تقديمي</p>
                         </div>
-                        <button class="view-btn" onclick="openDocument('1.pptx')">تحميل</button>
+                        <button class="view-btn" onclick="openModal('1.pptx', 'pptx')">عرض</button>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="presentations">
@@ -457,7 +441,7 @@
                             <h4>عرض 8.pptx</h4>
                             <p>عرض تقديمي</p>
                         </div>
-                        <button class="view-btn" onclick="openDocument('8.pptx')">تحميل</button>
+                        <button class="view-btn" onclick="openModal('8.pptx', 'pptx')">عرض</button>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="presentations">
@@ -467,17 +451,102 @@
                             <h4>عرض 21.pptx</h4>
                             <p>عرض تقديمي</p>
                         </div>
-                        <button class="view-btn" onclick="openDocument('21.pptx')">تحميل</button>
+                        <button class="view-btn" onclick="openModal('21.pptx', 'pptx')">عرض</button>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="presentations">
-                    <div class="gallery-card presentation-card">
-                        <div class="presentation-icon">📊</div>
-                        <div class="document-info">
-                            <h4>عرض 22.pptx</h4>
-                            <p>عرض تقديمي</p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspector Projects Section -->
+    <section class="inspector-projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">مشاريع المفتشين المبتكرة</h2>
+                <p class="section-subtitle">مبادرات مبتكرة لتطوير وتحسين العمليات التفتيشية</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-icon">🐾</div>
+                    <h3 class="project-title">مشروع إدارة الرفق بالحيوان</h3>
+                    <p class="project-description">مشروع مقدم من أحد المفتشين لدى مدير إدارة الرفق بالحيوان يهدف إلى تحسين جودة الخدمات المقدمة للحيوانات</p>
+                    <button class="project-btn" onclick="openExternalProject('https://abdulla-alhosani-adm.github.io/Animal-Welfare-Department-Abu-Dhabi-Municipality/')">
+                        <span>عرض المشروع</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-delay="100">
+                    <div class="project-icon">🔍</div>
+                    <h3 class="project-title">نظام خطة التفتيش المبتكر</h3>
+                    <p class="project-description">نموذج جديد مبتكر لتحسين عمليات التفتيش مقدم من أحد المفتشين لدى مدير الإدارة يستخدم تقنيات حديثة لضمان الدقة والكفاءة</p>
+                    <button class="project-btn" onclick="openExternalProject('https://aliabdelaal-adm.github.io/Excellence_Award_2025/inspection-plan-system.html')">
+                        <span>عرض النظام</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance and Performance Section -->
+    <section class="compliance-section" id="compliance">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">الامتثال والأداء</h2>
+                <p class="section-subtitle">نتائج التفتيش وتقييم الأداء خلال 2025</p>
+            </div>
+            <div class="compliance-content">
+                <div class="compliance-highlight">
+                    <div class="highlight-icon">✅</div>
+                    <div class="highlight-text">
+                        <h3>انخفاض ملحوظ في المخالفات</h3>
+                        <p>من خلال تقارير التفتيش خلال عام 2025، تم تسجيل انخفاض كبير في أعداد المخالفات، مما يعكس التزام المؤسسات والأفراد بالمعايير المطلوبة</p>
+                    </div>
+                </div>
+                <div class="compliance-highlight">
+                    <div class="highlight-icon">📈</div>
+                    <div class="highlight-text">
+                        <h3>ارتفاع معدلات الامتثال</h3>
+                        <p>شهدنا زيادة ملموسة في الامتثال والالتزام بالقوانين واللوائح، نتيجة للحملات التوعوية والجهود المشتركة لتحسين الوعي البيئي والصحي</p>
+                    </div>
+                </div>
+                <div class="compliance-stats">
+                    <div class="compliance-stat-item">
+                        <div class="stat-circle">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#e0e0e0" stroke-width="10"/>
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#1abc9c" stroke-width="10" 
+                                        stroke-dasharray="314" stroke-dashoffset="47" 
+                                        transform="rotate(-90 60 60)"/>
+                            </svg>
+                            <div class="stat-value">85%</div>
                         </div>
-                        <button class="view-btn" onclick="openDocument('22.pptx')">تحميل</button>
+                        <p class="stat-desc">معدل الامتثال</p>
+                    </div>
+                    <div class="compliance-stat-item">
+                        <div class="stat-circle">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#e0e0e0" stroke-width="10"/>
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#3498db" stroke-width="10" 
+                                        stroke-dasharray="314" stroke-dashoffset="94" 
+                                        transform="rotate(-90 60 60)"/>
+                            </svg>
+                            <div class="stat-value">70%</div>
+                        </div>
+                        <p class="stat-desc">انخفاض المخالفات</p>
+                    </div>
+                    <div class="compliance-stat-item">
+                        <div class="stat-circle">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#e0e0e0" stroke-width="10"/>
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#e74c3c" stroke-width="10" 
+                                        stroke-dasharray="314" stroke-dashoffset="0" 
+                                        transform="rotate(-90 60 60)"/>
+                            </svg>
+                            <div class="stat-value">100%</div>
+                        </div>
+                        <p class="stat-desc">تغطية التفتيش</p>
                     </div>
                 </div>
             </div>
@@ -541,28 +610,20 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <!-- Acknowledgement Section -->
+    <section class="acknowledgement" id="acknowledgement">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">التواصل معنا</h2>
-                <p class="section-subtitle">نحن هنا للإجابة على استفساراتكم</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <h4>البريد الإلكتروني</h4>
-                    <p>animalwelfare@adm.abudhabi.ae</p>
+            <div class="acknowledgement-card">
+                <div class="acknowledgement-icon">🌟</div>
+                <h2 class="acknowledgement-title">كلمة شكر وتقدير</h2>
+                <div class="director-signature">
+                    <h3>عبدالله حسن جاسم أحمد الحوسنى</h3>
+                    <p class="director-position">مدير إدارة الرفق بالحيوان</p>
                 </div>
-                <div class="contact-card">
-                    <div class="contact-icon">📱</div>
-                    <h4>الهاتف</h4>
-                    <p>+971 2 123 4567</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">📍</div>
-                    <h4>العنوان</h4>
-                    <p>بلدية مدينة أبوظبي - أبوظبي</p>
+                <div class="acknowledgement-message">
+                    <p>أتقدم بخالص الشكر والتقدير لجميع موظفي إدارة الرفق بالحيوان على جهودهم الدؤوبة وتفانيهم في تحقيق أهدافنا المشتركة. كما أشكر رؤساء الأقسام والمفتشين على مبادراتهم المبتكرة التي أسهمت في تطوير منظومة العمل وتحسين الخدمات المقدمة.</p>
+                    <p>إن ما حققناه من إنجازات خلال هذا العام هو ثمرة العمل الجماعي والتعاون المستمر بين جميع أفراد الفريق. نفخر بما وصلنا إليه من معدلات امتثال عالية وانخفاض ملحوظ في المخالفات، وهذا يعكس التزامنا الجماعي بتحقيق التميز في خدمة مجتمعنا.</p>
+                    <p>شكراً لكل من ساهم في هذا النجاح، ونتطلع لمزيد من التقدم والإنجازات في المستقبل.</p>
                 </div>
             </div>
         </div>
@@ -575,6 +636,7 @@
                 <div class="footer-section">
                     <h3>بلدية مدينة أبوظبي</h3>
                     <p>إدارة الرفق بالحيوان</p>
+                    <p class="footer-director">مدير الإدارة: عبدالله حسن جاسم أحمد الحوسنى</p>
                 </div>
                 <div class="footer-section">
                     <h4>روابط سريعة</h4>
@@ -582,13 +644,10 @@
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#objectives">الأهداف</a></li>
                         <li><a href="#gallery">المعرض</a></li>
+                        <li><a href="#projects">المشاريع</a></li>
+                        <li><a href="#compliance">الامتثال</a></li>
                         <li><a href="#statistics">الإحصائيات</a></li>
                     </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>معلومات الاتصال</h4>
-                    <p>البريد: animalwelfare@adm.abudhabi.ae</p>
-                    <p>الهاتف: +971 2 123 4567</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -603,6 +662,15 @@
         <div class="modal-content">
             <img id="modal-img" class="modal-image" alt="عرض الصورة">
             <iframe id="modal-pdf" class="modal-pdf"></iframe>
+            <iframe id="modal-pptx" class="modal-pptx"></iframe>
+        </div>
+    </div>
+
+    <!-- External Project Modal -->
+    <div id="project-modal" class="modal">
+        <span class="modal-close" onclick="closeProjectModal()">&times;</span>
+        <div class="modal-content">
+            <iframe id="project-iframe" class="project-iframe"></iframe>
         </div>
     </div>
 
