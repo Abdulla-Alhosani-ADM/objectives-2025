@@ -317,12 +317,12 @@
             
             <!-- Gallery View Toggle -->
             <div class="gallery-controls">
-                <div class="view-toggle">
-                    <button class="view-toggle-btn active" data-view="accordion" title="عرض مضغوط">
+                <div class="view-toggle" role="tablist" aria-label="اختيار طريقة العرض">
+                    <button class="view-toggle-btn active" data-view="accordion" title="عرض مضغوط" role="tab" aria-selected="true" aria-controls="gallery-accordion">
                         <span class="icon">☰</span>
                         <span class="label">عرض مضغوط</span>
                     </button>
-                    <button class="view-toggle-btn" data-view="grid" title="عرض شبكي">
+                    <button class="view-toggle-btn" data-view="grid" title="عرض شبكي" role="tab" aria-selected="false" aria-controls="gallery-grid">
                         <span class="icon">⊞</span>
                         <span class="label">عرض شبكي</span>
                     </button>

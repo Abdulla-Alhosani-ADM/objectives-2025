@@ -262,15 +262,10 @@ function initAccordionGallery() {
             const category = header.parentElement;
             const isActive = category.classList.contains('active');
             
-            // Toggle current category
+            // Toggle current category (allows multiple categories to be open simultaneously)
             if (isActive) {
                 category.classList.remove('active');
             } else {
-                // Close other categories (optional - remove these lines for multiple open categories)
-                // document.querySelectorAll('.accordion-category').forEach(cat => {
-                //     cat.classList.remove('active');
-                // });
-                
                 category.classList.add('active');
             }
         });
@@ -340,9 +335,13 @@ function initViewToggle() {
         btn.addEventListener('click', () => {
             const view = btn.getAttribute('data-view');
             
-            // Update active button
-            toggleBtns.forEach(b => b.classList.remove('active'));
+            // Update active button and ARIA attributes
+            toggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
             
             // Toggle views
             if (view === 'accordion') {

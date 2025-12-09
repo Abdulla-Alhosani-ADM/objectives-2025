@@ -978,8 +978,11 @@ body {
 }
 
 .accordion-category.active .accordion-content {
-    /* Max height set to accommodate typical content. 
-       Adjust if categories contain more items. */
+    /* Max height calculation: 
+       Each item is ~280px (preview 150px + padding 40px + info 90px)
+       Grid has 4 columns on desktop, so 4 items = 1 row (~280px)
+       2000px accommodates ~7 rows = 28 items per category
+       If your category has more items, increase by 280px per additional row */
     max-height: 2000px;
     padding: 2rem;
     border-top: 2px solid var(--bg-secondary);
