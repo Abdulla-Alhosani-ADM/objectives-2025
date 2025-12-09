@@ -820,6 +820,288 @@ body {
     background: var(--bg-secondary);
 }
 
+/* Gallery Controls */
+.gallery-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0 3rem;
+    flex-wrap: wrap;
+}
+
+.view-toggle {
+    display: flex;
+    gap: 0.5rem;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50px;
+    box-shadow: var(--shadow-md);
+}
+
+.view-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.view-toggle-btn.active {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.view-toggle-btn:hover:not(.active) {
+    background: var(--bg-secondary);
+    color: var(--primary-color);
+}
+
+.view-toggle-btn .icon {
+    font-size: 1.2rem;
+}
+
+.gallery-search {
+    flex: 1;
+    max-width: 500px;
+}
+
+.gallery-search input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    background: white;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+.gallery-search input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Accordion Gallery */
+.gallery-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.accordion-category {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.accordion-category:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-family: var(--font-primary);
+}
+
+.accordion-header:hover {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #ffffff 100%);
+}
+
+.accordion-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.category-icon {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+}
+
+.category-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.category-count {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+}
+
+.accordion-arrow {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform var(--transition-normal);
+}
+
+.accordion-category.active .accordion-arrow {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+}
+
+.accordion-category.active .accordion-content {
+    max-height: 2000px;
+    padding: 2rem;
+    border-top: 2px solid var(--bg-secondary);
+}
+
+.accordion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.accordion-item {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+.accordion-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.accordion-item-preview {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+.accordion-item-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.document-preview,
+.presentation-preview {
+    background: linear-gradient(135deg, rgba(26, 95, 122, 0.1) 0%, rgba(45, 122, 156, 0.1) 100%);
+    position: relative;
+}
+
+.presentation-preview {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(241, 196, 15, 0.1) 100%);
+}
+
+.doc-icon,
+.ppt-icon {
+    font-size: 4rem;
+}
+
+.doc-type,
+.ppt-type {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.ppt-type {
+    background: var(--gradient-secondary);
+    color: var(--text-primary);
+}
+
+.accordion-item-info {
+    padding: 1rem;
+}
+
+.accordion-item-info h5 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.accordion-item-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+.quick-view-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.quick-view-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.quick-view-btn.presentation-btn {
+    background: var(--gradient-secondary);
+    color: var(--text-primary);
+}
+
+/* Hidden state for accordion items during search */
+.accordion-item.search-hidden {
+    display: none;
+}
+
+.accordion-category.search-hidden {
+    display: none;
+}
+
 .gallery-tabs {
     display: flex;
     justify-content: center;
@@ -1693,6 +1975,42 @@ body {
     
     .gallery-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .gallery-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .gallery-search {
+        max-width: 100%;
+    }
+    
+    .view-toggle {
+        justify-content: center;
+    }
+    
+    .accordion-header {
+        padding: 1rem;
+    }
+    
+    .category-name {
+        font-size: 1.2rem;
+    }
+    
+    .category-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    
+    .accordion-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .accordion-category.active .accordion-content {
+        padding: 1rem;
     }
     
     .document-card,

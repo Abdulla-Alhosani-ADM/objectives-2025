@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initAnimatedCounters();
     initProgressBars();
     initGalleryFilter();
+    initAccordionGallery();
+    initGallerySearch();
+    initViewToggle();
     initModal();
     initCharts();
     initScrollAnimations();
@@ -239,6 +242,116 @@ function initGalleryFilter() {
                     }, 300);
                 }
             });
+        });
+    });
+}
+
+// ===================================
+// Accordion Gallery
+// ===================================
+function initAccordionGallery() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    // Open first category by default
+    if (accordionHeaders.length > 0) {
+        accordionHeaders[0].parentElement.classList.add('active');
+    }
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const category = header.parentElement;
+            const isActive = category.classList.contains('active');
+            
+            // Toggle current category
+            if (isActive) {
+                category.classList.remove('active');
+            } else {
+                // Close other categories (optional - remove these lines for multiple open categories)
+                // document.querySelectorAll('.accordion-category').forEach(cat => {
+                //     cat.classList.remove('active');
+                // });
+                
+                category.classList.add('active');
+            }
+        });
+    });
+}
+
+// ===================================
+// Gallery Search
+// ===================================
+function initGallerySearch() {
+    const searchInput = document.getElementById('gallery-search');
+    
+    if (!searchInput) return;
+    
+    searchInput.addEventListener('input', debounce((e) => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        const items = document.querySelectorAll('.accordion-item');
+        const categories = document.querySelectorAll('.accordion-category');
+        
+        if (searchTerm === '') {
+            // Reset all items and categories
+            items.forEach(item => item.classList.remove('search-hidden'));
+            categories.forEach(cat => cat.classList.remove('search-hidden'));
+            return;
+        }
+        
+        // Search through items
+        categories.forEach(category => {
+            const categoryItems = category.querySelectorAll('.accordion-item');
+            let hasVisibleItems = false;
+            
+            categoryItems.forEach(item => {
+                const searchData = item.getAttribute('data-search').toLowerCase();
+                const itemText = item.textContent.toLowerCase();
+                
+                if (searchData.includes(searchTerm) || itemText.includes(searchTerm)) {
+                    item.classList.remove('search-hidden');
+                    hasVisibleItems = true;
+                } else {
+                    item.classList.add('search-hidden');
+                }
+            });
+            
+            // Hide category if no visible items
+            if (hasVisibleItems) {
+                category.classList.remove('search-hidden');
+                category.classList.add('active'); // Open category with results
+            } else {
+                category.classList.add('search-hidden');
+            }
+        });
+    }, 300));
+}
+
+// ===================================
+// View Toggle (Accordion/Grid)
+// ===================================
+function initViewToggle() {
+    const toggleBtns = document.querySelectorAll('.view-toggle-btn');
+    const accordionView = document.getElementById('gallery-accordion');
+    const gridView = document.querySelector('.gallery-grid');
+    const gridTabs = document.querySelector('.gallery-tabs');
+    
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const view = btn.getAttribute('data-view');
+            
+            // Update active button
+            toggleBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Toggle views
+            if (view === 'accordion') {
+                if (accordionView) accordionView.classList.remove('hidden');
+                if (gridView) gridView.classList.add('hidden');
+                if (gridTabs) gridTabs.classList.add('hidden');
+            } else if (view === 'grid') {
+                if (accordionView) accordionView.classList.add('hidden');
+                if (gridView) gridView.classList.remove('hidden');
+                if (gridTabs) gridTabs.classList.remove('hidden');
+            }
         });
     });
 }

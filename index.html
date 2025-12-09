@@ -314,7 +314,223 @@
                 <h2 class="section-title">المعرض المرئي</h2>
                 <p class="section-subtitle">الوثائق والتقارير والعروض التقديمية</p>
             </div>
-            <div class="gallery-tabs">
+            
+            <!-- Gallery View Toggle -->
+            <div class="gallery-controls">
+                <div class="view-toggle">
+                    <button class="view-toggle-btn active" data-view="accordion" title="عرض مضغوط">
+                        <span class="icon">☰</span>
+                        <span class="label">عرض مضغوط</span>
+                    </button>
+                    <button class="view-toggle-btn" data-view="grid" title="عرض شبكي">
+                        <span class="icon">⊞</span>
+                        <span class="label">عرض شبكي</span>
+                    </button>
+                </div>
+                <div class="gallery-search">
+                    <input type="text" id="gallery-search" placeholder="🔍 بحث في المعرض..." />
+                </div>
+            </div>
+
+            <!-- Accordion View (Default) -->
+            <div class="gallery-accordion" id="gallery-accordion">
+                <!-- Images Category -->
+                <div class="accordion-category" data-category="images">
+                    <button class="accordion-header">
+                        <div class="accordion-title">
+                            <span class="category-icon">🖼️</span>
+                            <span class="category-name">الصور التوضيحية</span>
+                            <span class="category-count">4 عناصر</span>
+                        </div>
+                        <span class="accordion-arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-grid">
+                            <div class="accordion-item" data-search="صورة توضيحية 1">
+                                <div class="accordion-item-preview">
+                                    <img src="1.jpg" alt="صورة 1" loading="lazy">
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>صورة توضيحية 1</h5>
+                                    <button class="quick-view-btn" onclick="openModal('1.jpg', 'image')">عرض سريع</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="صورة توضيحية 2">
+                                <div class="accordion-item-preview">
+                                    <img src="2.jpg" alt="صورة 2" loading="lazy">
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>صورة توضيحية 2</h5>
+                                    <button class="quick-view-btn" onclick="openModal('2.jpg', 'image')">عرض سريع</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="صورة توضيحية 3">
+                                <div class="accordion-item-preview">
+                                    <img src="3.jpg" alt="صورة 3" loading="lazy">
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>صورة توضيحية 3</h5>
+                                    <button class="quick-view-btn" onclick="openModal('3.jpg', 'image')">عرض سريع</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="صورة توضيحية 5">
+                                <div class="accordion-item-preview">
+                                    <img src="5.jpg" alt="صورة 5" loading="lazy">
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>صورة توضيحية 5</h5>
+                                    <button class="quick-view-btn" onclick="openModal('5.jpg', 'image')">عرض سريع</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documents Category -->
+                <div class="accordion-category" data-category="documents">
+                    <button class="accordion-header">
+                        <div class="accordion-title">
+                            <span class="category-icon">📄</span>
+                            <span class="category-name">المستندات والتقارير</span>
+                            <span class="category-count">6 عناصر</span>
+                        </div>
+                        <span class="accordion-arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-grid">
+                            <div class="accordion-item" data-search="مستند 2 تقرير مفصل">
+                                <div class="accordion-item-preview document-preview">
+                                    <span class="doc-icon">📄</span>
+                                    <span class="doc-type">PDF</span>
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>مستند 2</h5>
+                                    <p>تقرير مفصل للأهداف</p>
+                                    <button class="quick-view-btn" onclick="openModal('2.pdf', 'pdf')">عرض</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="مستند 3 تقرير تفصيلي">
+                                <div class="accordion-item-preview document-preview">
+                                    <span class="doc-icon">📄</span>
+                                    <span class="doc-type">PDF</span>
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>مستند 3</h5>
+                                    <p>تقرير تفصيلي للمشاريع</p>
+                                    <button class="quick-view-btn" onclick="openModal('3.pdf', 'pdf')">عرض</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="مستند 5 تقرير الأداء">
+                                <div class="accordion-item-preview document-preview">
+                                    <span class="doc-icon">📄</span>
+                                    <span class="doc-type">PDF</span>
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>مستند 5</h5>
+                                    <p>تقرير الأداء والنتائج</p>
+                                    <button class="quick-view-btn" onclick="openModal('5.pdf', 'pdf')">عرض</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="مستند 6 خطط استراتيجيات">
+                                <div class="accordion-item-preview document-preview">
+                                    <span class="doc-icon">📄</span>
+                                    <span class="doc-type">PDF</span>
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>مستند 6</h5>
+                                    <p>خطط وإستراتيجيات العمل</p>
+                                    <button class="quick-view-btn" onclick="openModal('6.pdf', 'pdf')">عرض</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="مستند 7 بيانات معلومات">
+                                <div class="accordion-item-preview document-preview">
+                                    <span class="doc-icon">📄</span>
+                                    <span class="doc-type">PDF</span>
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>مستند 7</h5>
+                                    <p>بيانات ومعلومات شاملة</p>
+                                    <button class="quick-view-btn" onclick="openModal('7.pdf', 'pdf')">عرض</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="مستند 20 إحصائيات تحليلات">
+                                <div class="accordion-item-preview document-preview">
+                                    <span class="doc-icon">📄</span>
+                                    <span class="doc-type">PDF</span>
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>مستند 20</h5>
+                                    <p>ملف إحصائيات وتحليلات</p>
+                                    <button class="quick-view-btn" onclick="openModal('20.pdf', 'pdf')">عرض</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Presentations Category -->
+                <div class="accordion-category" data-category="presentations">
+                    <button class="accordion-header">
+                        <div class="accordion-title">
+                            <span class="category-icon">📊</span>
+                            <span class="category-name">العروض التقديمية</span>
+                            <span class="category-count">4 عناصر</span>
+                        </div>
+                        <span class="accordion-arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-grid">
+                            <div class="accordion-item" data-search="عرض 1 أهداف رؤية">
+                                <div class="accordion-item-preview presentation-preview">
+                                    <span class="ppt-icon">📊</span>
+                                    <span class="ppt-type">PPTX</span>
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>عرض 1</h5>
+                                    <p>عرض تقديمي للأهداف والرؤية</p>
+                                    <button class="quick-view-btn presentation-btn" onclick="openModal('1.pptx', 'pptx')">عرض</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="عرض 8 برامج مبادرات">
+                                <div class="accordion-item-preview presentation-preview">
+                                    <span class="ppt-icon">📊</span>
+                                    <span class="ppt-type">PPTX</span>
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>عرض 8</h5>
+                                    <p>عرض تقديمي للبرامج والمبادرات</p>
+                                    <button class="quick-view-btn presentation-btn" onclick="openModal('8.pptx', 'pptx')">عرض</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="عرض 21 إنجازات نتائج">
+                                <div class="accordion-item-preview presentation-preview">
+                                    <span class="ppt-icon">📊</span>
+                                    <span class="ppt-type">PPTX</span>
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>عرض 21</h5>
+                                    <p>عرض تقديمي للإنجازات والنتائج</p>
+                                    <button class="quick-view-btn presentation-btn" onclick="openModal('21.pptx', 'pptx')">عرض</button>
+                                </div>
+                            </div>
+                            <div class="accordion-item" data-search="عرض 25 استراتيجيات خطط شامل">
+                                <div class="accordion-item-preview presentation-preview">
+                                    <span class="ppt-icon">📊</span>
+                                    <span class="ppt-type">PPTX</span>
+                                </div>
+                                <div class="accordion-item-info">
+                                    <h5>عرض 25</h5>
+                                    <p>عرض تقديمي شامل للاستراتيجيات والخطط</p>
+                                    <button class="quick-view-btn presentation-btn" onclick="openModal('25.pptx', 'pptx')">عرض</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid View (Hidden by default) -->
+            <div class="gallery-tabs hidden">
                 <button class="gallery-tab active" data-category="all">الكل</button>
                 <button class="gallery-tab" data-category="images">الصور</button>
                 <button class="gallery-tab" data-category="documents">المستندات</button>
@@ -611,6 +827,34 @@
                             </div>
                         </div>
                         <button class="view-btn-enhanced presentation-btn" onclick="openModal('21.pptx', 'pptx')">
+                            <span>عرض التقديم</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="presentations">
+                    <div class="gallery-card presentation-card">
+                        <div class="document-header presentation-header">
+                            <div class="document-icon-wrapper">
+                                <div class="presentation-icon">📊</div>
+                                <span class="document-badge presentation-badge">PPTX</span>
+                            </div>
+                        </div>
+                        <div class="document-content">
+                            <h4 class="document-title">عرض 25</h4>
+                            <p class="document-description">عرض تقديمي شامل للاستراتيجيات والخطط</p>
+                            <div class="document-meta">
+                                <span class="meta-item">
+                                    <span class="meta-icon">📅</span>
+                                    <span>2025</span>
+                                </span>
+                                <span class="meta-item">
+                                    <span class="meta-icon">🎯</span>
+                                    <span>عرض استراتيجي</span>
+                                </span>
+                            </div>
+                        </div>
+                        <button class="view-btn-enhanced presentation-btn" onclick="openModal('25.pptx', 'pptx')">
                             <span>عرض التقديم</span>
                             <span class="btn-icon">→</span>
                         </button>
