@@ -285,7 +285,7 @@ function initGallerySearch() {
     
     if (!searchInput) return;
     
-    searchInput.addEventListener('input', debounce((e) => {
+    const debouncedSearch = debounce((e) => {
         const searchTerm = e.target.value.toLowerCase().trim();
         const items = document.querySelectorAll('.accordion-item');
         const categories = document.querySelectorAll('.accordion-category');
@@ -322,7 +322,9 @@ function initGallerySearch() {
                 category.classList.add('search-hidden');
             }
         });
-    }, 300));
+    }, 300);
+    
+    searchInput.addEventListener('input', debouncedSearch);
 }
 
 // ===================================

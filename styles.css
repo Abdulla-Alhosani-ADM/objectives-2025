@@ -978,6 +978,8 @@ body {
 }
 
 .accordion-category.active .accordion-content {
+    /* Max height set to accommodate typical content. 
+       Adjust if categories contain more items. */
     max-height: 2000px;
     padding: 2rem;
     border-top: 2px solid var(--bg-secondary);
@@ -1128,13 +1130,6 @@ body {
     color: white;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
 }
 
 .gallery-item {
@@ -2084,4 +2079,16 @@ body {
 
 .hidden {
     display: none !important;
+}
+
+/* Gallery grid view - hidden by default in favor of accordion */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.gallery-grid.hidden {
+    display: none;
 }
