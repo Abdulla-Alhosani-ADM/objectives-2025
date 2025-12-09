@@ -35,9 +35,11 @@ function initNavigation() {
     const navLinks = document.querySelector('.nav-links');
     const links = document.querySelectorAll('.nav-link');
     
-    // Sticky navbar on scroll
+    // Sticky navbar on scroll with performance optimization
     let lastScroll = 0;
-    window.addEventListener('scroll', () => {
+    let ticking = false;
+    
+    const handleScroll = () => {
         const currentScroll = window.pageYOffset;
         
         if (currentScroll > 100) {
@@ -52,7 +54,17 @@ function initNavigation() {
         
         // Update active link based on scroll position
         updateActiveLink();
-    });
+        ticking = false;
+    };
+    
+    const requestScrollUpdate = () => {
+        if (!ticking) {
+            requestAnimationFrame(handleScroll);
+            ticking = true;
+        }
+    };
+    
+    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
     
     // Mobile menu toggle
     menuToggle.addEventListener('click', () => {
@@ -207,7 +219,7 @@ function animateProgressCounter(element, target) {
 }
 
 // ===================================
-// Gallery Filter
+// Gallery Filter - Optimized
 // ===================================
 function initGalleryFilter() {
     const tabs = document.querySelectorAll('.gallery-tab');
@@ -221,23 +233,25 @@ function initGalleryFilter() {
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
             
-            // Filter items
-            items.forEach(item => {
-                const itemCategory = item.getAttribute('data-category');
-                
-                if (category === 'all' || itemCategory === category) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
+            // Filter items with optimized transforms
+            requestAnimationFrame(() => {
+                items.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    
+                    if (category === 'all' || itemCategory === category) {
+                        item.style.display = 'block';
+                        requestAnimationFrame(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translate3d(0, 0, 0)';
+                        });
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translate3d(0, 20px, 0)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
             });
         });
     });
@@ -477,7 +491,7 @@ function initCharts() {
 }
 
 // ===================================
-// Scroll Animations
+// Scroll Animations - Optimized
 // ===================================
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.objective-card, .stat-card, .gallery-item, .chart-card');
@@ -490,31 +504,48 @@ function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Use transform3d for hardware acceleration
                 entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.transform = 'translate3d(0, 0, 0)';
+                // Stop observing once animated to reduce performance overhead
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
     
     animatedElements.forEach(element => {
         element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
+        element.style.transform = 'translate3d(0, 30px, 0)';
         element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(element);
     });
 }
 
 // ===================================
-// Parallax Effect
+// Parallax Effect - Optimized
 // ===================================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
+(function initParallax() {
     const hero = document.querySelector('.hero');
+    if (!hero) return;
     
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
+    let ticking = false;
+    
+    const updateParallax = () => {
+        const scrolled = window.pageYOffset;
+        // Use transform3d for hardware acceleration
+        hero.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0)`;
+        ticking = false;
+    };
+    
+    const requestParallaxUpdate = () => {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    };
+    
+    window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
+})();
 
 // ===================================
 // Utility Functions
