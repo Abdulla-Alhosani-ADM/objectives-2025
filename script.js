@@ -263,8 +263,25 @@ function initModal() {
     });
     
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
+        if (e.key === 'Escape') {
+            // Check for monthly plan popup first (highest priority)
+            const monthlyPopup = document.getElementById('monthly-plan-popup');
+            if (monthlyPopup && monthlyPopup.classList.contains('active')) {
+                closeMonthlyPlanPopup();
+                return;
+            }
+            
+            // Check for inspection plan modal
+            const inspectionModal = document.getElementById('inspection-plan-modal');
+            if (inspectionModal && inspectionModal.classList.contains('active')) {
+                closeInspectionPlanModal();
+                return;
+            }
+            
+            // Check for general modal
+            if (modal.classList.contains('active')) {
+                closeModal();
+            }
         }
     });
 }
@@ -570,6 +587,54 @@ function closeProjectModal() {
 }
 
 // ===================================
+// Inspection Plan Description Modal
+// ===================================
+function showInspectionPlanDescription() {
+    const modal = document.getElementById('inspection-plan-modal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeInspectionPlanModal() {
+    const modal = document.getElementById('inspection-plan-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function openMonthlyPlanPopup() {
+    const popup = document.getElementById('monthly-plan-popup');
+    const iframe = document.getElementById('monthly-plan-iframe');
+    
+    // Set the iframe source to the monthly inspection plan URL
+    iframe.src = 'https://aliabdelaal-adm.github.io/Monthly_inspection_plan/';
+    
+    popup.classList.add('active');
+}
+
+function closeMonthlyPlanPopup() {
+    const popup = document.getElementById('monthly-plan-popup');
+    const iframe = document.getElementById('monthly-plan-iframe');
+    
+    popup.classList.remove('active');
+    
+    // Clear iframe source after popup animation completes (300ms)
+    const POPUP_ANIMATION_DURATION = 300;
+    setTimeout(() => {
+        iframe.src = '';
+    }, POPUP_ANIMATION_DURATION);
+}
+
+// Close popup when clicking outside
+document.addEventListener('click', function(e) {
+    const popup = document.getElementById('monthly-plan-popup');
+    if (e.target === popup) {
+        closeMonthlyPlanPopup();
+    }
+});
+
+
+
+// ===================================
 // Export functions for inline use
 // ===================================
 window.openModal = openModal;
@@ -577,6 +642,10 @@ window.closeModal = closeModal;
 window.openDocument = openDocument;
 window.openExternalProject = openExternalProject;
 window.closeProjectModal = closeProjectModal;
+window.showInspectionPlanDescription = showInspectionPlanDescription;
+window.closeInspectionPlanModal = closeInspectionPlanModal;
+window.openMonthlyPlanPopup = openMonthlyPlanPopup;
+window.closeMonthlyPlanPopup = closeMonthlyPlanPopup;
 
 console.log('🎯 Objectives 2025 - Application Initialized Successfully');
 console.log('📊 Dashboard loaded and ready');
