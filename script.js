@@ -280,6 +280,10 @@ function openModal(src, type) {
         modalImg.style.display = 'block';
         modalPdf.style.display = 'none';
         modalImg.src = src;
+    } else if (type === 'pdf') {
+        modalImg.style.display = 'none';
+        modalPdf.style.display = 'block';
+        modalPdf.src = src;
     }
 }
 
