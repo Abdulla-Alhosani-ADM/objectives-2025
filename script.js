@@ -292,8 +292,7 @@ function openModal(src, type) {
         modalPdf.style.display = 'none';
         modalPptx.style.display = 'block';
         // Use Microsoft Office Online Viewer for PowerPoint files
-        const currentUrl = window.location.href.replace('index.html', '');
-        const pptxUrl = currentUrl + src;
+        const pptxUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + src;
         modalPptx.src = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(pptxUrl)}`;
     }
 }
