@@ -1680,54 +1680,95 @@ body {
 }
 
 .timeline-container {
-    margin-top: 4rem;
+    margin-top: 3rem;
+}
+
+.timeline-container.compact {
+    max-height: 50vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--bg-secondary);
+}
+
+.timeline-container.compact::-webkit-scrollbar {
+    width: 8px;
+}
+
+.timeline-container.compact::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+.timeline-container.compact::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.timeline-container.compact::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
 }
 
 .timeline-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--primary-color);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     text-align: center;
     font-weight: 700;
 }
 
+.timeline-years {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.timeline-year {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.year-label {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--secondary-color);
+}
+
 .timeline {
     position: relative;
-    padding: 2rem 0;
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
 }
 
 .timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 50%;
-    width: 4px;
-    background: var(--gradient-primary);
-    border-radius: 2px;
+    display: none;
 }
 
 .timeline-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 3rem;
     position: relative;
-}
-
-.timeline-item:nth-child(odd) {
-    flex-direction: row-reverse;
+    padding: 0;
+    margin: 0;
 }
 
 .timeline-marker {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     background: white;
-    border: 4px solid var(--primary-light);
+    border: 3px solid var(--primary-light);
     border-radius: 50%;
-    position: absolute;
-    right: calc(50% - 15px);
     z-index: 2;
     transition: all var(--transition-normal);
+    margin-bottom: 0.5rem;
 }
 
 .timeline-item.completed .timeline-marker {
@@ -1746,7 +1787,7 @@ body {
         box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
     }
     70% {
-        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
     }
     100% {
         box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
@@ -1754,40 +1795,32 @@ body {
 }
 
 .timeline-content {
-    width: 45%;
-    background: var(--bg-secondary);
-    padding: 2rem;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    width: 100%;
+    background: white;
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
     transition: all var(--transition-normal);
-    /* Performance optimization */
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-left: 55%;
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    margin-right: 55%;
+    text-align: center;
+    border: 2px solid transparent;
 }
 
 .timeline-content:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
 }
 
 .timeline-content h4 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     font-weight: 700;
 }
 
 .timeline-content p {
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
 }
 
 /* ===================================
@@ -2408,22 +2441,8 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .timeline::before {
-        right: 20px;
-    }
-    
-    .timeline-item {
-        flex-direction: row !important;
-    }
-    
-    .timeline-marker {
-        right: 5px !important;
-    }
-    
-    .timeline-content {
-        width: calc(100% - 80px) !important;
-        margin-left: 80px !important;
-        margin-right: 0 !important;
+    .timeline {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 }
 
@@ -2591,6 +2610,18 @@ body {
     
     .acknowledgement-card {
         padding: 2rem;
+    }
+    
+    .timeline {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .timeline-container.compact {
+        max-height: none;
+    }
+    
+    .year-label {
+        font-size: 1.3rem;
     }
     
     .inspection-plan-header {
