@@ -3384,12 +3384,13 @@ body {
     flex: 1;
 }
 
-.facility-info h7 {
+.facility-info h6,
+.facility-info .facility-name {
     font-size: 1.1rem;
     font-weight: 700;
     color: #2c3e50;
     display: block;
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem 0;
 }
 
 .facility-location {
