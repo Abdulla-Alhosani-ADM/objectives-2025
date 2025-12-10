@@ -46,3 +46,13 @@ yarn.lock
 .env
 .env.local
 .env.*.local
+
+# Python files
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data generation scripts (temporary)
+create_sample_data.py
+analyze_municipality_reports.py
