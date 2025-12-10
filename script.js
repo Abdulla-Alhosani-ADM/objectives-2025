@@ -266,10 +266,8 @@ function initGalleryFilter() {
 function initAccordionGallery() {
     const accordionHeaders = document.querySelectorAll('.accordion-header');
     
-    // Open first category by default
-    if (accordionHeaders.length > 0) {
-        accordionHeaders[0].parentElement.classList.add('active');
-    }
+    // لا تفتح أي تصنيف افتراضياً - يجب أن تكون جميع التصنيفات مغلقة عند التحميل
+    // هذا يضمن إخفاء جميع الصور والملفات حتى ينقر المستخدم على التصنيف المناسب
     
     accordionHeaders.forEach(header => {
         header.addEventListener('click', () => {
