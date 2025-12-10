@@ -119,6 +119,7 @@ objectives-2025/
 ├── 2.pdf - 7.pdf       # المستندات والتقارير
 ├── 20.pdf              # تقرير إضافي
 ├── *.pptx              # العروض التقديمية (8.pptx, 16.pptx, 21.pptx, 31.pptx, 32.pptx)
+├── 33.docx             # مستند Word
 └── .gitignore          # ملف استثناءات Git
 ```
 
