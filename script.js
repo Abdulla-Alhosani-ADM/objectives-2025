@@ -420,6 +420,9 @@ function openModal(src, type) {
     
     modal.classList.add('active');
     
+    // Hide body overflow for true full-screen experience
+    document.body.style.overflow = 'hidden';
+    
     if (type === 'image') {
         modalImg.style.display = 'block';
         modalPdf.style.display = 'none';
@@ -450,6 +453,9 @@ function closeModal() {
     modalImg.src = '';
     modalPdf.src = '';
     modalPptx.src = '';
+    
+    // Restore body scroll
+    document.body.style.overflow = 'auto';
 }
 
 function openDocument(filename) {
