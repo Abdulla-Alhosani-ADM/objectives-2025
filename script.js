@@ -266,10 +266,8 @@ function initGalleryFilter() {
 function initAccordionGallery() {
     const accordionHeaders = document.querySelectorAll('.accordion-header');
     
-    // Open first category by default
-    if (accordionHeaders.length > 0) {
-        accordionHeaders[0].parentElement.classList.add('active');
-    }
+    // DO NOT open any category by default - all categories should be closed initially
+    // This ensures all images and files are hidden until the user clicks on a category
     
     accordionHeaders.forEach(header => {
         header.addEventListener('click', () => {
