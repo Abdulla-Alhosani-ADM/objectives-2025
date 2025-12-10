@@ -784,6 +784,8 @@ document.addEventListener('click', function(e) {
 // ===================================
 function toggleDescription(objectiveId) {
     const descContent = document.getElementById(`desc-${objectiveId}`);
+    if (!descContent) return;
+    
     const expandBtn = descContent.previousElementSibling;
     
     // Toggle active class on content
