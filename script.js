@@ -780,6 +780,31 @@ document.addEventListener('click', function(e) {
 
 
 // ===================================
+// Toggle Detailed Descriptions
+// ===================================
+function toggleDescription(objectiveId) {
+    const descContent = document.getElementById(`desc-${objectiveId}`);
+    const expandBtn = descContent.previousElementSibling;
+    
+    // Toggle active class on content
+    if (descContent.classList.contains('active')) {
+        descContent.classList.remove('active');
+        expandBtn.classList.remove('active');
+        // Scroll to the expand button smoothly
+        setTimeout(() => {
+            expandBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+    } else {
+        descContent.classList.add('active');
+        expandBtn.classList.add('active');
+        // Wait for animation to start, then scroll to show content
+        setTimeout(() => {
+            descContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+}
+
+// ===================================
 // Export functions for inline use
 // ===================================
 window.openModal = openModal;
@@ -791,6 +816,7 @@ window.showInspectionPlanDescription = showInspectionPlanDescription;
 window.closeInspectionPlanModal = closeInspectionPlanModal;
 window.openMonthlyPlanPopup = openMonthlyPlanPopup;
 window.closeMonthlyPlanPopup = closeMonthlyPlanPopup;
+window.toggleDescription = toggleDescription;
 
 console.log('🎯 Objectives 2025 - Application Initialized Successfully');
 console.log('📊 Dashboard loaded and ready');
