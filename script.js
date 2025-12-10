@@ -432,13 +432,13 @@ function openModal(src, type) {
         modalPdf.style.display = 'block';
         modalPptx.style.display = 'none';
         modalPdf.src = src;
-    } else if (type === 'pptx') {
+    } else if (type === 'pptx' || type === 'docx') {
         modalImg.style.display = 'none';
         modalPdf.style.display = 'none';
         modalPptx.style.display = 'block';
-        // Use Microsoft Office Online Viewer for PowerPoint files
-        const pptxUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + src;
-        modalPptx.src = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(pptxUrl)}`;
+        // Use Microsoft Office Online Viewer for PowerPoint and Word files
+        const fileUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + src;
+        modalPptx.src = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(fileUrl)}`;
     }
 }
 
