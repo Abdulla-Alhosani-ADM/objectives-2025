@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="جاري تحديث البيانات - بلدية مدينة أبوظبي">
+    <title>جاري تحديث البيانات | بلدية مدينة أبوظبي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===================================
+           Global Styles & Reset
+           =================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Primary Colors */
+            --primary-color: #1a5f7a;
+            --primary-dark: #0e3a4d;
+            --primary-light: #2d7a9c;
+            --secondary-color: #d4af37;
+            --accent-color: #e74c3c;
+            
+            /* Neutral Colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-dark: #1a1a2e;
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --text-light: #ffffff;
+            
+            /* Gradient Colors */
+            --gradient-primary: linear-gradient(135deg, #1a5f7a 0%, #2d7a9c 100%);
+            --gradient-secondary: linear-gradient(135deg, #d4af37 0%, #f1c40f 100%);
+            
+            /* Typography */
+            --font-primary: 'Cairo', 'Tajawal', sans-serif;
+            --font-secondary: 'Tajawal', 'Cairo', sans-serif;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===================================
+           404 Container
+           =================================== */
+        .error-container {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===================================
+           Logo Section
+           =================================== */
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .logo-icon {
+            font-size: 4rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .logo-text h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .logo-text p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* ===================================
+           Update Icon & Animation
+           =================================== */
+        .update-icon {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2.5rem;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .update-icon-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 20px 60px rgba(26, 95, 122, 0.3);
+            position: relative;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .update-icon-inner::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            border-radius: 50%;
+            border: 3px solid var(--primary-light);
+            opacity: 0.3;
+            animation: pulse-ring 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0.3;
+            }
+        }
+
+        .update-icon-inner::after {
+            content: '';
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            border-radius: 50%;
+            border: 2px solid var(--secondary-color);
+            opacity: 0.2;
+            animation: pulse-ring 2s ease-in-out infinite 1s;
+        }
+
+        /* ===================================
+           Content Section
+           =================================== */
+        .error-content {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            animation: slideIn 0.8s ease 0.2s backwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .error-subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .error-message {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 2;
+        }
+
+        .error-details {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            border-right: 5px solid var(--secondary-color);
+        }
+
+        .error-details h3 {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .error-details ul {
+            list-style: none;
+            text-align: right;
+            color: var(--text-secondary);
+        }
+
+        .error-details li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .error-details li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        /* ===================================
+           Loading Bar
+           =================================== */
+        .loading-bar-container {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: var(--gradient-secondary);
+            border-radius: 10px;
+            animation: loading 2s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--secondary-color);
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0%;
+            }
+            50% {
+                width: 70%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* ===================================
+           Buttons
+           =================================== */
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-primary);
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            box-shadow: 0 10px 30px rgba(26, 95, 122, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(26, 95, 122, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ===================================
+           Footer
+           =================================== */
+        .error-footer {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            animation: fadeIn 1s ease 0.4s backwards;
+        }
+
+        .error-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color var(--transition-fast);
+        }
+
+        .error-footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* ===================================
+           Responsive Design
+           =================================== */
+        @media (max-width: 768px) {
+            .logo-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo-icon {
+                font-size: 3rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .logo-text p {
+                font-size: 0.9rem;
+            }
+
+            .update-icon {
+                width: 140px;
+                height: 140px;
+            }
+
+            .update-icon-inner {
+                font-size: 4rem;
+            }
+
+            .error-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .error-message {
+                font-size: 1rem;
+            }
+
+            .btn-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-container {
+                padding: 2rem 1rem;
+            }
+
+            .error-title {
+                font-size: 1.75rem;
+            }
+
+            .error-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="logo-icon">🏛️</div>
+            <div class="logo-text">
+                <h1>بلدية مدينة أبوظبي</h1>
+                <p>إدارة الرفق بالحيوان</p>
+            </div>
+        </div>
+
+        <!-- Update Icon -->
+        <div class="update-icon">
+            <div class="update-icon-inner">
+                🔄
+            </div>
+        </div>
+
+        <!-- Error Content -->
+        <div class="error-content">
+            <h1 class="error-title">جاري تحديث البيانات</h1>
+            <h2 class="error-subtitle">نعمل على تحسين تجربتك</h2>
+            
+            <p class="error-message">
+                نعتذر عن الإزعاج! الصفحة التي تبحث عنها قيد التحديث حالياً لتوفير محتوى أفضل وأكثر دقة.
+            </p>
+
+            <!-- Loading Bar -->
+            <div class="loading-bar-container">
+                <div class="loading-bar"></div>
+            </div>
+
+            <!-- Details Box -->
+            <div class="error-details">
+                <h3>
+                    <span>⏳</span>
+                    ما الذي يحدث الآن؟
+                </h3>
+                <ul>
+                    <li>نقوم بتحديث البيانات والمعلومات</li>
+                    <li>نحسّن أداء الموقع وسرعته</li>
+                    <li>نضيف محتوى جديد ومفيد</li>
+                    <li>نتأكد من دقة جميع المعلومات</li>
+                </ul>
+            </div>
+
+            <p class="error-message">
+                يمكنك العودة إلى الصفحة الرئيسية أو المحاولة مرة أخرى بعد قليل.
+            </p>
+
+            <!-- Buttons -->
+            <div class="btn-container">
+                <a href="/" class="btn btn-primary">
+                    <span>🏠</span>
+                    العودة للصفحة الرئيسية
+                </a>
+                <a href="javascript:window.location.reload()" class="btn btn-secondary">
+                    <span>🔄</span>
+                    إعادة المحاولة
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="error-footer">
+            <p>
+                إذا استمرت المشكلة، يرجى 
+                <a href="mailto:animalwelfare@adm.abudhabi.ae">التواصل معنا</a>
+            </p>
+            <p style="margin-top: 0.5rem;">
+                © 2025 بلدية مدينة أبوظبي - إدارة الرفق بالحيوان
+            </p>
+        </div>
+    </div>
+</body>
+</html>
