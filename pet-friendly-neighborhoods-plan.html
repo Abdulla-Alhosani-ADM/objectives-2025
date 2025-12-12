@@ -11,6 +11,163 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
+        /* Password Lock Overlay */
+        .password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 95, 122, 0.98) 0%, rgba(44, 122, 156, 0.98) 100%);
+            backdrop-filter: blur(10px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .password-overlay.hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .password-container {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .lock-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            color: #1a5f7a;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .password-title {
+            font-size: 2em;
+            color: #1a5f7a;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .password-subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .password-input-group {
+            margin-bottom: 25px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.3em;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 5px;
+            transition: all 0.3s ease;
+            direction: ltr;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #1a5f7a;
+            box-shadow: 0 0 0 4px rgba(26, 95, 122, 0.1);
+        }
+
+        .password-input.error {
+            border-color: #e74c3c;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .password-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.3em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2c7a9c 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .password-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 95, 122, 0.4);
+        }
+
+        .password-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .security-note {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .security-icon {
+            color: #d4af37;
+            font-size: 1.2em;
+        }
+
         .plan-hero {
             background: linear-gradient(135deg, #1a5f7a 0%, #2c7a9c 100%);
             padding: 100px 0 60px 0;
@@ -376,6 +533,40 @@
     </style>
 </head>
 <body>
+    <!-- Password Lock Overlay -->
+    <div class="password-overlay" id="passwordOverlay">
+        <div class="password-container">
+            <div class="lock-icon">🔒</div>
+            <h2 class="password-title">محتوى محمي</h2>
+            <p class="password-subtitle">
+                هذه الخطة الشاملة للسيطرة على الحيوانات الضالة تحتوي على معلومات استراتيجية مهمة.
+                <br>
+                يرجى إدخال الرقم السري للوصول إلى المحتوى.
+            </p>
+            <div class="password-input-group">
+                <input 
+                    type="password" 
+                    id="passwordInput" 
+                    class="password-input" 
+                    placeholder="الرقم السري"
+                    maxlength="4"
+                    autocomplete="off"
+                >
+            </div>
+            <button class="password-btn" onclick="checkPassword()">
+                <span>🔓</span>
+                <span>فتح القفل</span>
+            </button>
+            <div class="error-message" id="errorMessage">
+                ⚠️ الرقم السري غير صحيح. حاول مرة أخرى.
+            </div>
+            <div class="security-note">
+                <span class="security-icon">🛡️</span>
+                <strong>ملاحظة أمنية:</strong> هذا المحتوى محمي للحفاظ على سرية المعلومات الاستراتيجية الواردة في الخطة.
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="plan-hero">
         <div class="container">
@@ -909,5 +1100,73 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Password protection script
+        const CORRECT_PASSWORD = '2071';
+        const SESSION_KEY = 'stray_animal_plan_authenticated';
+
+        // Check if already authenticated in this session
+        function checkAuthentication() {
+            const isAuthenticated = sessionStorage.getItem(SESSION_KEY);
+            if (isAuthenticated === 'true') {
+                document.getElementById('passwordOverlay').classList.add('hidden');
+            }
+        }
+
+        // Check password function
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const errorMsg = document.getElementById('errorMessage');
+            const password = input.value.trim();
+
+            if (password === CORRECT_PASSWORD) {
+                // Correct password
+                sessionStorage.setItem(SESSION_KEY, 'true');
+                document.getElementById('passwordOverlay').style.animation = 'fadeOut 0.5s ease';
+                setTimeout(() => {
+                    document.getElementById('passwordOverlay').classList.add('hidden');
+                }, 500);
+            } else {
+                // Wrong password
+                input.classList.add('error');
+                errorMsg.classList.add('show');
+                input.value = '';
+                
+                setTimeout(() => {
+                    input.classList.remove('error');
+                    errorMsg.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Allow Enter key to submit
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthentication();
+            
+            const input = document.getElementById('passwordInput');
+            if (input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkPassword();
+                    }
+                });
+                
+                // Focus on input when page loads
+                setTimeout(() => {
+                    input.focus();
+                }, 500);
+            }
+        });
+
+        // Add fadeOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
